@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :find_task, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @tasks = @project.tasks.not_deleted
+    @tasks = @project.tasks.not_deleted.not_expired
   end
 
   def show

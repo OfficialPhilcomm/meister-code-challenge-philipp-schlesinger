@@ -8,3 +8,8 @@
 #     command: "SoftDeletedRecord.due.delete_all"
 #     priority: 2
 #     schedule: at 5am every day
+
+development:
+  task_expiration:
+    class: MyJob
+    schedule: every day at 9am
