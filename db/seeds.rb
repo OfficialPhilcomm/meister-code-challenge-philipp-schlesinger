@@ -10,9 +10,10 @@
 
 Project.transaction do
   200.times do |i|
-    project = Project.create!(name: "Project °#{i}")
+    project = Project.create!(name: "Project °#{i}", created_at: 1.year.ago, updated_at: 1.year.ago)
     30.times do |j|
-      Task.create!(project:, name: "Task °#{j}")
+      expired_at = [ true, false ].sample ? (1.year.ago.to_date..Time.zone.now.to_date).to_a.sample : nil
+      Task.create!(project:, name: "Task °#{j}", expired_at:)
     end
   end
 end
