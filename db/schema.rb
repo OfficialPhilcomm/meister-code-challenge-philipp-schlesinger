@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_03_112553) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_03_130042) do
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "task_dependencies", force: :cascade do |t|
+    t.integer "task_id"
+    t.integer "dependent_on_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dependent_on_id"], name: "index_task_dependencies_on_dependent_on_id"
+    t.index ["task_id"], name: "index_task_dependencies_on_task_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -30,6 +39,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_03_112553) do
     t.index ["task_id"], name: "index_tasks_on_task_id"
   end
 
+  add_foreign_key "task_dependencies", "tasks"
+  add_foreign_key "task_dependencies", "tasks", column: "dependent_on_id"
   add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "tasks"
 end
