@@ -11,5 +11,5 @@
 
 development:
   task_expiration:
-    class: MyJob
+    class: TasksExpirationJob
     schedule: every day at 9am

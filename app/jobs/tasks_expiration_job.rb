@@ -1,4 +1,4 @@
-class TasksExpiration < ApplicationJob
+class TasksExpirationJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
