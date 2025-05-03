@@ -1,8 +1,8 @@
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [ :show, :edit, :update ]
+  before_action :find_project, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @projects = Project.all
+    @projects = Project.not_deleted
   end
 
   def show
@@ -18,6 +18,12 @@ class ProjectsController < ApplicationController
       render :show, locals: { project: @project }
     else
       render :edit, locals: { project: @project }
+    end
+  end
+
+  def destroy
+    if @project.update(deleted_at: Time.zone.now)
+      render turbo_stream: turbo_stream.remove(@project)
     end
   end
 
