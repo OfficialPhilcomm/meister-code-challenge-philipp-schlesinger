@@ -7,3 +7,12 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Project.transaction do
+  200.times do |i|
+    project = Project.create!(name: "Project °#{i}")
+    30.times do |j|
+      Task.create!(project:, name: "Task °#{j}")
+    end
+  end
+end
