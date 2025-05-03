@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(project, "edit"), class: "flex flex-row gap-2 items-center", refresh: "morph" do %>
+  <div class=""><%= project.name %></div>
+
+  <%= link_to edit_project_path(project), class: "w-4 h-full cursor-pointer flex items-center justify-center" do %>
+    <i class="fa-solid fa-pen fa-sm text-slate-500 transition-colors hover:text-blue-500"></i>
+  <% end %>
+<% end %>

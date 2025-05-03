@@ -1,0 +1,12 @@
+<%= turbo_frame_tag dom_id(project, "edit"), class: "flex flex-row gap-2 items-center", refresh: "morph" do %>
+  <%= form_with model: project do |f| %>
+    <%= f.text_field :name, class: "border-2 border-slate-500 rounded-md" %>
+    <button class="cursor-pointer">
+      <i class="fa-solid fa-floppy-disk text-green-500"></i>
+    </button>
+  <% end %>
+
+  <%= link_to project_path(project), class: "w-4 h-full cursor-pointer flex items-center justify-center" do %>
+    <i class="fa-solid fa-xmark text-slate-500 transition-colors hover:text-red-500"></i>
+  <% end %>
+<% end %>

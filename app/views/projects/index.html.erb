@@ -6,7 +6,7 @@
           <i class="fa-solid fa-caret-right transition-transform" data-project-target="caret"></i>
         </div>
 
-        <%= project.name %>
+        <%= render template: "projects/show", locals: {project: project} %>
       </div>
 
       <div class="hidden" data-project-target="tasks">
