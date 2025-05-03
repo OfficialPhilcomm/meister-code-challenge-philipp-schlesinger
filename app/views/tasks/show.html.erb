@@ -4,4 +4,8 @@
   <%= link_to edit_project_task_path(project, task), class: "w-4 h-full cursor-pointer flex items-center justify-center" do %>
     <i class="fa-solid fa-pen fa-sm text-slate-500 transition-colors hover:text-blue-500"></i>
   <% end %>
+
+  <%= link_to project_task_path(project, task), class: "w-4 h-full cursor-pointer flex items-center justify-center ml-auto", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this task?" } do %>
+    <i class="fa-solid fa-trash text-slate-800 transition-colors hover:text-red-500"></i>
+  <% end %>
 <% end %>

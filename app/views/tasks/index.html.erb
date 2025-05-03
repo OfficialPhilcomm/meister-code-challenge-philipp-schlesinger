@@ -1,7 +1,7 @@
 <%= turbo_frame_tag dom_id(@project, "tasks") do %>
   <div class="grid grid-cols-2 gap-4 p-4">
     <% @tasks.each do |task| %>
-      <div class="border-2 border-blue-500 rounded-md p-1 bg-blue-50">
+      <div id=<%= dom_id(task) %> class="border-2 border-blue-500 rounded-md p-1 bg-blue-50">
         <%= render template: "tasks/show", locals: {project: @project, task: task} %>
       </div>
     <% end %>

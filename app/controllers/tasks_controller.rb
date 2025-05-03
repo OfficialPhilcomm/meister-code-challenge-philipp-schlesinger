@@ -1,9 +1,9 @@
 class TasksController < ApplicationController
-  before_action :find_project, only: [ :index, :show, :edit, :update ]
-  before_action :find_task, only: [ :show, :edit, :update ]
+  before_action :find_project, only: [ :index, :show, :edit, :update, :destroy ]
+  before_action :find_task, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    @tasks = @project.tasks
+    @tasks = @project.tasks.not_deleted
   end
 
   def show
@@ -19,6 +19,12 @@ class TasksController < ApplicationController
       render :show, locals: { project: @project, task: @task }
     else
       render :edit, locals: { project: @project, task: @task }
+    end
+  end
+
+  def destroy
+    if @task.update(deleted_at: Time.zone.now)
+      render turbo_stream: turbo_stream.remove(@task)
     end
   end
 
