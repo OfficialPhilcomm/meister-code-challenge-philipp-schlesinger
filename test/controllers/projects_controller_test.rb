@@ -9,7 +9,7 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
 
   test "destroy should set the deleted_at timestamp" do
     assert_nil projects(:mindmeister).deleted_at
-    delete project_path(projects(:mindmeister))
+    delete project_path(projects(:mindmeister)), headers: { Accept: "text/vnd.turbo-stream.html" }
     assert_response :success
     assert_not_equal projects(:mindmeister).reload.deleted_at, nil
   end
