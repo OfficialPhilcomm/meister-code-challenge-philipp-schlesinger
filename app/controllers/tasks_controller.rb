@@ -24,7 +24,7 @@ class TasksController < ApplicationController
 
   def destroy
     if @task.update(deleted_at: Time.zone.now)
-      render turbo_stream: turbo_stream.remove(@task)
+      render :destroy
     end
   end
 

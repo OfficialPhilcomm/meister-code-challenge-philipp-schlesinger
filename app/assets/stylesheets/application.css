@@ -12,3 +12,22 @@
 body {
   font-family: "Figtree"
 }
+
+.notification {
+  animation-name: notification;
+  animation-delay: 5s;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes notification {
+  0% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+  100% {
+    transform: translateY(-100px);
+    opacity: 0%;
+    display: none
+  }
+}

@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.update(deleted_at: Time.zone.now)
-      render turbo_stream: turbo_stream.remove(@project)
+      render :destroy
     end
   end
 

@@ -1,0 +1,4 @@
+<%= turbo_stream.remove(@task) %>
+<%= turbo_stream.append("notifications") do %>
+  <div class="w-128 bg-green-50 border-2 border-green-500 p-2 rounded-md notification">Task has been deleted</div>
+<% end %>
